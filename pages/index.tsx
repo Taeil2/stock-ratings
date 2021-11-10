@@ -1,10 +1,22 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import type { NextPage } from 'next'
+import styled from 'styled-components'
 import styles from '../styles/Home.module.css'
+
+const Button = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+  cursor: pointer;
+`
 
 const Home: NextPage = () => {
   return (
+    
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
@@ -13,6 +25,12 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
+        <div className="flex">
+          <div className="flex-1" style={{'background': 'red'}}>1</div>
+          <div className="flex-1" style={{'background': 'green'}}>2</div>
+          <div className="flex-1" style={{'background': 'blue'}}>3</div>
+        </div>
+        <Button>testing</Button>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
