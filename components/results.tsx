@@ -29,6 +29,8 @@ const Results = () => {
     setScores({'yahoo': buys})
   }
 
+  
+
   const yahoo2 = (ticker: string) => {
     fetch(`https://finance.yahoo.com/quote/${ticker}/`, {mode: 'no-cors'})
       .then(response => {
@@ -66,24 +68,6 @@ const Results = () => {
   // yahoo('hri')
   // yahoo2('hri')
   // console.log('scores', scores)
-
-  // runs every refresh
-  console.log('empty console log')
-
-  // runs every refresh
-  useEffect(() => {
-    console.log('using effect')
-  })
-
-  // runs once
-  useEffect(() => {
-    console.log('using effect with empty array')
-  }, [])
-
-  useEffect(() => {
-    setTest(1)
-  }, [])
-
 
   return (
     <div>

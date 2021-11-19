@@ -5,6 +5,7 @@ import type { NextPage } from 'next'
 import Results from '../components/results'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
+import { useState } from 'react'
 
 const SearchButton = styled.button`
   width: 20px;
@@ -16,6 +17,8 @@ const SearchButton = styled.button`
 `
 
 const Home: NextPage = () => {
+  const [search, setSearch] = useState('');
+
   return (
     <div>
       <Head>
@@ -29,7 +32,7 @@ const Home: NextPage = () => {
           <input type="text" />
           <SearchButton><FontAwesomeIcon icon={faSearch} /></SearchButton>
         </div>
-        <Results />
+        <Results search={search} />
       </main>
 
       <footer>
