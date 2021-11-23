@@ -11,9 +11,13 @@ const Results = () => {
 
   const yahoo = async (ticker: string) => {
     let buys: number[] = []
+
+    console.log('checking yahoo', ticker)
   
     const response = await fetch(`https://finance.yahoo.com/quote/${ticker}/`, {mode: 'no-cors'}) // 'cors' by default
     const text = await response.text()
+
+    await console.log(response, text)
   
     // {"trend":[{"period":"0m","strongBuy":2,"buy":1,"hold":3,"sell":1,"strongSell":0},{"period":"-1m","strongBuy":2,"buy":5,"hold":1,"sell":0,"strongSell":0},{"period":"-2m","strongBuy":2,"buy":5,"hold":1,"sell":0,"strongSell":0},{"period":"-3m","strongBuy":2,"buy":1,"hold":4,"sell":0,"strongSell":0}],"maxAge":86400}
     const buysString = await text.match(/{"trend":(.*?)"maxAge":[0-9]+}/gm)
@@ -65,9 +69,10 @@ const Results = () => {
     // const text = await response.text()
   }
 
-  // yahoo('hri')
-  // yahoo2('hri')
-  // console.log('scores', scores)
+  useEffect(() => {
+    yahoo('hri')
+    yahoo2('hri')
+  }, [])
 
   return (
     <div>
@@ -75,11 +80,11 @@ const Results = () => {
       { scores.hasOwnProperty('yahoo') && 
         <div>
           yahoo
-          <div>{scores.yahoo[0]}</div>
+          {/* <div>{scores.yahoo[0]}</div>
           <div>{scores.yahoo[1]}</div>
           <div>{scores.yahoo[2]}</div>
           <div>{scores.yahoo[3]}</div>
-          <div>{scores.yahoo[4]}</div>
+          <div>{scores.yahoo[4]}</div> */}
         </div>
       }
       { scores.hasOwnProperty('marketwatch') && 

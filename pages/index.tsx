@@ -29,10 +29,10 @@ const Home: NextPage = () => {
 
       <main>
         <div className="flex container">
-          <input type="text" />
+          <input type="text" value={search} onChange={(e) => {setSearch(e.target.value)}} />
           <SearchButton><FontAwesomeIcon icon={faSearch} /></SearchButton>
         </div>
-        <Results search={search} />
+        <Results />
       </main>
 
       <footer>
